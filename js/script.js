@@ -5,10 +5,12 @@ const images = [];
 const canvas = document.getElementById("headset-canvas");
 const context = canvas.getContext("2d");
 
+
 // Função que define o caminho de cada frame
 const currentFrame = index => {
     return `assets/imgs/frames/frame_${index}.png`;
 };
+
 
 // Pré-carrega todas as imagens para a memória na inicialização
 function preloadImages() {
