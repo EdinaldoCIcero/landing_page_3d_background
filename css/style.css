@@ -1,0 +1,453 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #050508;
+    color: #f4f4f6;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    /* Altura maior para acomodar todas as novas seções fluidas */
+    height: 500vh; 
+}
+
+/* ==========================================
+   NAVBAR FIXA (CABEÇALHO)
+   ========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #00d2ff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.btn-nav {
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    color: #00d2ff;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-nav:hover {
+    background: #00d2ff;
+    color: #050508;
+}
+
+/* ==========================================
+   CANVAS DE FUNDO 3D (COM IMAGEM E GRADIENTE)
+   ========================================== */
+.canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Fundo combinado com imagem e escurecedor para destacar o headset */
+    background: linear-gradient(rgba(5, 5, 8, 0.88), rgba(5, 5, 8, 0.88)), url('../assets/imgs/back_3.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ==========================================
+   ESTRUTURA DAS SEÇÕES
+   ========================================== */
+.content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+/* Seção 1 com respiro no topo para não tapar o headset inicial */
+.section-1 {
+    justify-content: flex-start;
+    padding-top: 10vh;
+}
+
+/* Cards de Texto Padrão */
+.container {
+    max-width: 440px;
+    background: rgba(10, 10, 16, 0.75);
+    backdrop-filter: blur(12px);
+    padding: 35px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.text-left {
+    margin-left: 2%;
+    margin-right: auto;
+}
+
+.text-right {
+    margin-left: auto;
+    margin-right: 2%;
+}
+
+.text-center {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 500px;
+}
+
+/* ==========================================
+   SEÇÕES ESPECIAIS (RECURSOS E AVALIAÇÕES)
+   ========================================== */
+.section-features, .section-reviews {
+    justify-content: center;
+    padding: 0 5%;
+}
+
+.features-container, .reviews-container {
+    max-width: 1000px;
+    width: 100%;
+    background: rgba(10, 10, 16, 0.82);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+/* Grids */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.feature-card p, .review-card p {
+    font-size: 0.9rem;
+    color: #a1a1aa;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.stars {
+    color: #f59e0b;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.reviewer {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #00d2ff;
+}
+
+/* ==========================================
+   TIPOGRAFIA E BOTÕES
+   ========================================== */
+.tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #00d2ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.tag-blue {
+    color: #3b82f6;
+}
+
+h1 {
+    font-size: clamp(2.3rem, 4vw, 3.2rem);
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #a1a1aa;
+    margin-bottom: 20px;
+}
+
+.scroll-hint {
+    font-size: 0.85rem;
+    color: #71717a;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #00d2ff, #3b82f6);
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(0, 210, 255, 0.3);
+}
+
+
+
+/* ==========================================
+   RODAPÉ (FOOTER)
+   ========================================== */
+.site-footer {
+    position: relative;
+    z-index: 2;
+    background: rgba(3, 3, 5, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.site-footer p {
+    font-size: 0.85rem;
+    color: #71717a;
+    margin-bottom: 5px;
+}
+
+.site-footer .credits {
+    font-size: 0.75rem;
+    color: #52525b;
+}
+
+/* Estilo do link de créditos no rodapé */
+.site-footer .credits a {
+    color: #00d2ff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.site-footer .credits a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+
+
+/* ==========================================
+   RESPONSIVIDADE (MOBILE) - CORREÇÃO DO CARD
+   ========================================== */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+    }
+
+    body {
+        height: 600vh; 
+    }
+
+    .section {
+        height: 100vh;
+        padding: 0 4%;
+        align-items: flex-end; /* Mantém o card na parte de baixo */
+        padding-bottom: 20px;
+    }
+
+    /* O SEGREDO AQUI: Deixa o card menor, com menos padding e mais leve */
+    .container {
+        background: rgba(10, 10, 16, 0.7); /* Fundo mais translúcido para ver o 3D atrás */
+        backdrop-filter: blur(8px);
+        padding: 18px 20px; /* Reduz a altura do card */
+        max-width: 100%;
+        margin: 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .features-container, .reviews-container {
+        padding: 20px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .features-grid, .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Tipografia compacta para não estourar o card menor */
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: 0.85rem;
+        margin-bottom: 10px; /* Reduz o espaço entre o texto e o rodapé do card */
+        line-height: 1.4;
+    }
+
+    
+    .tag {
+        margin-bottom: 6px;
+        font-size: 0.65rem;
+    }
+
+    .scroll-hint {
+        margin-top: 4px;
+        font-size: 0.75rem;
+    }
+
+    /* SEÇÃO 1 NO MOBILE: Lado a lado ou mais compactada no topo */
+    .section-1 {
+        height: 80vh;
+        /* Joga o card para o topo/meio e deixa o fundo livre para o headset */
+        align-items: flex-start; 
+        padding-top: 80px; /* Dá espaço logo abaixo da navbar */
+    }
+
+    .section-1 .container {
+        /* Deixa o card com largura otimizada e um fundo bem leve */
+        width: 90%;
+        max-width: 340px;
+        margin: 0 auto;
+        background: rgba(10, 10, 16, 0.75);
+        backdrop-filter: blur(10px);
+        padding: 16px;
+        /* Posiciona sutilmente para a esquerda se quiser focar o fone na direita */
+        text-align: left;
+    }
+
+    /* Remove o footer "passando por cima" garantindo que ele fique estático no fim do fluxo */
+    .site-footer {
+        position: relative;
+        z-index: 10;
+        margin-top: 50px;
+    }
+
+
+
+
+}
