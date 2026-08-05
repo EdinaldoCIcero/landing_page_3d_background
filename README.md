@@ -1,6 +1,6 @@
 # Aura Sound X — Landing Page 3D Interativa
 
-![Prévia do Projeto](COLE_O_CAMINHO_OU_NOME_DO_PRINT_AQUI.png)
+![Prévia do Projeto](assets/imgs/print_project.png)
 
 > Uma landing page moderna e imersiva desenvolvida para apresentação de produto, utilizando animação 3D baseada em scroll (sequência de frames renderizados no Blender) e um design futurista em Dark Mode.
 
